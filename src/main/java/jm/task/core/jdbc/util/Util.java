@@ -11,19 +11,19 @@ import java.util.Properties;
 
 public class Util {
 
-
     public static Connection getCon() {
-        String URL = null;
-        String USERNAME = null;
-        String PASSWORD = null;
+        String url;
+        String login;
+        String pass;
 
         Properties properties = new Properties();
-        try {
-            InputStream inputStream = new FileInputStream("src/main/resources/config.properties");
+
+        try(InputStream inputStream = new FileInputStream("src/main/resources/config.properties")) {
+
             properties.load(inputStream);
-            URL = properties.getProperty("db.host");
-            USERNAME = properties.getProperty("db.login");
-            PASSWORD = properties.getProperty("db.password");
+            url = properties.getProperty("host");
+            login = properties.getProperty("login");
+            pass = properties.getProperty("pass");
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -31,10 +31,9 @@ public class Util {
             throw new RuntimeException(e);
         }
 
-
-        Connection connection = null;
+        Connection connection;
         try {
-            connection = DriverManager.getConnection (URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection (url, login, pass);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
