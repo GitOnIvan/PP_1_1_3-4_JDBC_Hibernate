@@ -1,5 +1,4 @@
 package jm.task.core.jdbc.util;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,10 +7,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Util {
 
-    public static Connection getCon() {
+    public static Connection getConnection() {
         String url;
         String login;
         String pass;
@@ -19,7 +19,6 @@ public class Util {
         Properties properties = new Properties();
 
         try(InputStream inputStream = new FileInputStream("src/main/resources/config.properties")) {
-
             properties.load(inputStream);
             url = properties.getProperty("host");
             login = properties.getProperty("login");

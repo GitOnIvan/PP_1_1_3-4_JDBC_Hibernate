@@ -13,7 +13,11 @@ public interface UserDao {
 
     void removeUserById(long id);
 
-    List<User> getAllUsers();
+    static List<User> getAllUsers(String query) {
+        return null;
+    }
+
+
 
     void cleanUsersTable();
 }
