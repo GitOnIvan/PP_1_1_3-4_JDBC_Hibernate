@@ -14,6 +14,8 @@ INSERT INTO user (name, lastname, age) VALUES (?, ?, ?);
 
 
 
+
+
 #insert into pp (name, lastname, age) values ('John', 'Smith', 25);
 #insert into pp values (DEFAULT, 'John', 'Smith', 25);
 #delete from pp where id=11;
