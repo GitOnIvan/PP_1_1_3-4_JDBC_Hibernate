@@ -49,6 +49,8 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             throw new RuntimeException(e);
         }
 
+        System.out.println("User с именем – " + name +" добавлен в базу данных");
+
 
 
 
@@ -89,6 +91,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(usersList);
 
         return usersList;
     }
