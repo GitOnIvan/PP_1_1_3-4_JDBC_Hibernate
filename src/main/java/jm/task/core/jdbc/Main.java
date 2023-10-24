@@ -14,21 +14,21 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
-//        UserServiceImpl userService = new UserServiceImpl();
-//        userService.createUsersTable();
-//
-//        userService.saveUser("Garry","Kasparov",(byte)60 );
-//        userService.saveUser("Magnus","Carlsen",(byte)32 );
-//        userService.saveUser("Vladimir","Kramnik",(byte)48 );
-//        userService.saveUser("Anatoly","Karpov",(byte)72 );
-//
-//
-//        userService.getAllUsers();
-//
-//        userService.cleanUsersTable();
-//
-//        userService.dropUsersTable();
 
+    UserServiceImpl userService = new UserServiceImpl();
+    userService.createUsersTable();
+
+    userService.saveUser("Garry","Kasparov",(byte)60 );
+    userService.saveUser("Magnus","Carlsen",(byte)32 );
+    userService.saveUser("Vladimir","Kramnik",(byte)48 );
+    userService.saveUser("Anatoly","Karpov",(byte)72 );
+
+
+    userService.getAllUsers();
+
+    userService.cleanUsersTable();
+
+    userService.dropUsersTable();
 
 
 

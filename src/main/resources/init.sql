@@ -10,6 +10,8 @@ DELETE FROM user;
 
 INSERT INTO user (name, lastname, age) VALUES (?, ?, ?);
 
+INSERT INTO user (name, lastname, age) VALUES ('Ivan', 'Ivanov', 10);
+
 
 
 
