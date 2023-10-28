@@ -1,13 +1,12 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.util.Util;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import static jm.task.core.jdbc.util.Util.getConnection;
 
-public class UserDaoJDBCImpl extends Util implements UserDao  {
+public class UserDaoJDBCImpl implements UserDao  {
     Connection connection = getConnection();
 
 
@@ -21,7 +20,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             statement.execute(sql);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
@@ -32,7 +31,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             statement.execute(sql);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
@@ -46,7 +45,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             preparedStatement.execute();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         System.out.println("User с именем – " + name +" добавлен в базу данных");
@@ -64,7 +63,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             preparedStatement.execute();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
 
@@ -89,7 +88,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         System.out.println(usersList);
 
@@ -102,7 +101,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao  {
             statement.execute(sql);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
