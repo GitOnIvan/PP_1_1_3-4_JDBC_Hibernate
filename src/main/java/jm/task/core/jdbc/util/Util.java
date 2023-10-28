@@ -47,8 +47,6 @@ public class Util {
 
 
     //Hibernate connection
-
-
     public static SessionFactory getSessionFactory() {
 
 
