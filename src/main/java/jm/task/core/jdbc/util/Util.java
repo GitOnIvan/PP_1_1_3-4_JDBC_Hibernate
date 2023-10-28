@@ -21,43 +21,29 @@ import jm.task.core.jdbc.model.User;
 
 
 public class Util {
-    private static String URL1;
-    private static String URL2;
-    private static String LOGIN;
-    private static String PASS;
-    private static String DRIVER;
-    private static String DIALECT;
-    private static String SHOW_SQL;
-    private static String SESSION_CLASS;
-    private static String HBM2DDL_AUTO;
-    private static SessionFactory sessionFactory;
+    private final static String URL1 = "jdbc:mysql://localhost:3306/pp_db";
+    private final static String URL2 = "jdbc:mysql://localhost:3306/pp_db?autoReconnect=true&useSSL=false";
+    private final static String LOGIN = "root";
+    private final static String PASS = "root";
+    private static String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static String DIALECT = "org.hibernate.dialect.MySQL5Dialect";
+    private static String SHOW_SQL = "true";
+    private static String SESSION_CLASS = "thread";
+    private static String HBM2DDL_AUTO = "create";
+    private static SessionFactory sessionFactory = null;
 
 
     // jdbc connection
     public static Connection getConnection() {
 
-        Properties properties = new Properties();
-
-        try(InputStream inputStream = new FileInputStream("src/main/resources/config.properties")) {
-            properties.load(inputStream);
-            URL1 = properties.getProperty("URL1");
-            LOGIN = properties.getProperty("LOGIN");
-            PASS = properties.getProperty("PASS");
-
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Connection connection;
+        Connection connection = null;
         try {
-            connection = DriverManager.getConnection (URL1, LOGIN, PASS);
+            connection = DriverManager.getConnection(URL1, LOGIN,PASS);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-    return connection;
+
+        return connection;
 
     }
 
@@ -68,26 +54,7 @@ public class Util {
 
     public static SessionFactory getSessionFactory() {
 
-        Properties properties = new Properties();
 
-        try(InputStream inputStream = new FileInputStream("src/main/resources/config.properties")) {
-            properties.load(inputStream);
-
-            URL2 = properties.getProperty("URL2");
-            LOGIN = properties.getProperty("LOGIN");
-            DRIVER = properties.getProperty("DRIVER");
-            DIALECT = properties.getProperty("DIALECT");
-            SHOW_SQL = properties.getProperty("SHOW_SQL");
-            SESSION_CLASS = properties.getProperty("SESSION_CLASS");
-            HBM2DDL_AUTO = properties.getProperty("HBM2DDL_AUTO");
-            PASS = properties.getProperty("PASS");
-
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         if (sessionFactory == null) {
             try {
@@ -121,12 +88,6 @@ public class Util {
         }
         return sessionFactory;
     }
-
-
-
-
-
-
 
 
 
