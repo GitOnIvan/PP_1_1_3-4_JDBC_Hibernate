@@ -1,44 +1,30 @@
 package jm.task.core.jdbc.util;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
-import java.util.Scanner;
+
 
 public class Util {
+    private final static String URL1 = "jdbc:mysql://localhost:3306/pp_db";
+    private final static String LOGIN = "root";
+    private final static String PASS = "root";
+
 
     public static Connection getConnection() {
-        String url;
-        String login;
-        String pass;
 
-        Properties properties = new Properties();
-
-        try(InputStream inputStream = new FileInputStream("src/main/resources/config.properties")) {
-            properties.load(inputStream);
-            url = properties.getProperty("host");
-            login = properties.getProperty("login");
-            pass = properties.getProperty("pass");
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Connection connection;
+        Connection connection = null;
         try {
-            connection = DriverManager.getConnection (url, login, pass);
+            connection = DriverManager.getConnection(URL1, LOGIN,PASS);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-    return connection;
+
+        return connection;
 
     }
+
+
 
 
 
