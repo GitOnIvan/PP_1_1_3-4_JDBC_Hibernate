@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import jm.task.core.jdbc.util.Util;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 
