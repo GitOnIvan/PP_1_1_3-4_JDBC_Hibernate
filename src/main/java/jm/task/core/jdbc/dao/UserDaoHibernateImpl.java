@@ -10,6 +10,14 @@ import static jm.task.core.jdbc.util.Util.getSessionFactory;
 
 
 public class UserDaoHibernateImpl implements UserDao {
+    public final static String CREATE = "CREATE TABLE IF NOT EXISTS user " +
+            "(id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL, name VARCHAR(45), lastname VARCHAR(45), age TINYINT);";
+
+    public final static String DROP = "DROP TABLE IF EXISTS user;";
+    public final static String CLEAR = "DELETE FROM user;";
+    public final static String ADD = "INSERT INTO user (name, lastname, age) VALUES (:name, :lastname, :age);";
+    public final static String REMOVE = "DELETE FROM user WHERE id= :id";
+    public final static String GETALL = "SELECT * FROM user;";
 
 
     public UserDaoHibernateImpl() {
@@ -22,9 +30,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "CREATE TABLE IF NOT EXISTS user (id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL, name VARCHAR(45), lastname VARCHAR(45), age TINYINT);";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query query = session.createSQLQuery(CREATE).addEntity(User.class);
         query.executeUpdate();
 
         transaction.commit();
@@ -36,9 +43,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "DROP TABLE IF EXISTS user;";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query query = session.createSQLQuery(DROP).addEntity(User.class);
         query.executeUpdate();
 
         transaction.commit();
@@ -53,9 +59,9 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "INSERT INTO user (name, lastname, age) VALUES (:name, :lastname, :age);";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+
+        Query query = session.createSQLQuery(ADD).addEntity(User.class);
         query.setParameter("name", name);
         query.setParameter("lastname", lastName);
         query.setParameter("age", age);
@@ -77,9 +83,9 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "DELETE FROM user WHERE id= :id";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+
+        Query query = session.createSQLQuery(REMOVE).addEntity(User.class);
         query.setParameter("id", id);
         query.executeUpdate();
 
@@ -94,9 +100,9 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "SELECT * FROM user;";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+
+        Query query = session.createSQLQuery(GETALL).addEntity(User.class);
         List<User> userList = query.list();
 
 
@@ -114,9 +120,9 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "DELETE FROM user;";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+
+        Query query = session.createSQLQuery(CLEAR).addEntity(User.class);
         query.executeUpdate();
 
         transaction.commit();
