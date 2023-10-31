@@ -94,7 +94,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     }
 
-
+    @Override
     public List<User> getAllUsers() {
 
         Session session = getSessionFactory().openSession();
