@@ -79,8 +79,13 @@ public class Util {
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Exception e) {
                 e.printStackTrace();
+
             }
+            // null check
+            System.out.println(sessionFactory==null);
+            System.out.println(sessionFactory);
         }
+
         return sessionFactory;
     }
 
