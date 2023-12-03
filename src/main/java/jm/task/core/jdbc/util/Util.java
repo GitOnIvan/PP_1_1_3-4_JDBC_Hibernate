@@ -15,8 +15,6 @@ import org.hibernate.cfg.Configuration;
 import jm.task.core.jdbc.model.User;
 
 
-
-
 public class Util {
     private final static String URL1 = "jdbc:mysql://localhost:3306/pp_db";
     private final static String URL2 = "jdbc:mysql://localhost:3306/pp_db?autoReconnect=true&useSSL=false";
@@ -30,25 +28,11 @@ public class Util {
     private static SessionFactory sessionFactory = null;
 
 
-    // jdbc connection
-    public static Connection getConnection() {
-
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(URL1, LOGIN,PASS);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return connection;
-
-    }
 
 
 
     //Hibernate connection
     public static SessionFactory getSessionFactory() {
-
 
 
         if (sessionFactory == null) {
@@ -81,14 +65,11 @@ public class Util {
                 e.printStackTrace();
 
             }
-            // null check
-            System.out.println(sessionFactory==null);
-            System.out.println(sessionFactory);
+
         }
 
         return sessionFactory;
     }
-
 
 
 }

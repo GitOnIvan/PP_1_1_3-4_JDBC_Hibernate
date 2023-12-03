@@ -2,6 +2,7 @@ package jm.task.core.jdbc.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -71,7 +72,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
-               '}' + '\n';
+                '}' + '\n';
     }
 
     @Override
